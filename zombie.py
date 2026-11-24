@@ -57,4 +57,4 @@ class Zombie:  # 일정 구간을 좌우로 왕복하며 걷는 좀비를 나타
         return self.x - 100, self.y - 100, self.x + 100, self.y + 100  # 중심에서 상하좌우 100픽셀 범위를 반환한다.
     def handle_collision(self, group, other):
         if group == "ball:zombies":
-            pass
+            image

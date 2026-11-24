@@ -144,6 +144,7 @@ class Boy:  # 입력에 따라 상태를 바꾸고 이동하거나 공을 발사
         game_world.add_oject(ball)  # 새 공을 기본 깊이의 게임 월드에 등록한다.
         game_world.add_collision_pairs("grass:ball", None, ball)  # 새 공을 잔디 충돌 그룹의 b측에 등록한다.
         game_world.add_collision_pairs("boy:ball", None, ball)  # 새 공을 소년 충돌 그룹의 b측에도 등록한다.
+        game_world.add_collision_pairs("boy:zombie", Boy, None)
 
     def pause(self):  # 플레이 모드가 일시 정지될 때 소년의 입력과 이동을 정리한다.
         self.pressed_keys.clear()  # 현재 눌린 것으로 기록된 모든 방향키를 제거한다.
@@ -192,3 +193,5 @@ class Boy:  # 입력에 따라 상태를 바꾸고 이동하거나 공을 발사
         if group == "boy:ball":  # 소년과 공 사이의 충돌인지 확인한다.
             self.ball_count += 1  # 닿은 공을 획득한 것으로 처리해 소지 개수를 하나 늘린다.
             # game_world.remove_object(other)  # 공 제거는 Ball.handle_collision에서 수행하도록 맡겨 둔다.
+        if group == "boy:zombies":
+            game_world.remove_object(self)

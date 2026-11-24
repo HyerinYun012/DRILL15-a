@@ -59,9 +59,9 @@ class Zombie:  # 일정 구간을 좌우로 왕복하며 걷는 좀비를 나타
     def handle_collision(self, group, other):
         global num
         if group == "ball:zombie":
+            if num == 1:
+                game_world.remove_object(self)
             if num == 0:
                 num += 1
                 pass
-            if num == 1:
-                game_world.remove_object(self)
         

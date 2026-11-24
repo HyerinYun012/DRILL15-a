@@ -1,3 +1,4 @@
+from email.mime import image
 import random  # 좀비의 시작 위치와 이동 방향을 무작위로 정하기 위해 가져온다.
 
 from pico2d import load_image, draw_rectangle, clamp  # 이미지 로드, 충돌 영역 표시, 범위 제한 함수를 가져온다.

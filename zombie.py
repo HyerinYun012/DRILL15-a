@@ -19,6 +19,7 @@ FRAMES_PER_ACTION = 10  # 걷기 동작 한 주기에 포함된 이미지 수를
 
 MIN_X, MAX_X = 800, 1600  # 좀비가 왕복할 수 있는 최소·최대 x좌표를 지정한다.
 
+num =0
 
 class Zombie:  # 일정 구간을 좌우로 왕복하며 걷는 좀비를 나타낸다.
     images = None  # 모든 좀비가 함께 사용할 애니메이션 이미지 묶음을 저장한다.
@@ -57,5 +58,10 @@ class Zombie:  # 일정 구간을 좌우로 왕복하며 걷는 좀비를 나타
         return self.x - 100, self.y - 100, self.x + 100, self.y + 100  # 중심에서 상하좌우 100픽셀 범위를 반환한다.
     def handle_collision(self, group, other):
         if group == "zombie:boy":
-            pass
+            global num
+            if num == 0:
+                num += 1
+                pass
+            if num == 1:
+                game_world.remove_object(self)
         

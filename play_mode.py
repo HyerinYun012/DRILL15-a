@@ -38,12 +38,15 @@ def init():  # 플레이 모드에 필요한 객체와 충돌 그룹을 초기�
 
     # 소년과 공 사이의 충돌을 검사할 양쪽 객체들을 충돌 그룹에 등록한다.
     game_world.add_collision_pairs("boy:ball", boy, None)  # 소년을 boy:ball 그룹의 a측에 등록한다.
+    game_world.add_collision_pairs("zombie:boy", None, boy)
     for ball in balls:  # 맵에 처음 배치한 공들을 하나씩 순회한다.
         game_world.add_collision_pairs("boy:ball", None, ball)  # 각 공을 boy:ball 그룹의 b측에 등록한다.
     zombies = [Zombie() for _ in range(4)]
     game_world.add_objects(zombies, 1)
     for zombie in zombies:
         game_world.add_collision_pairs("ball:zombies", zombie, None)
+    for zombie in zombies:
+            game_world.add_collision_pairs("zombie:boy", zombie, None)
 
 
 def pause():  # 다른 모드가 위에 쌓일 때 플레이 모드를 일시 정지한다.

@@ -44,7 +44,7 @@ def init():  # 플레이 모드에 필요한 객체와 충돌 그룹을 초기�
     zombies = [Zombie() for _ in range(4)]
     game_world.add_objects(zombies, 1)
     for zombie in zombies:
-        game_world.add_collision_pairs("ball:zombies", zombie, None)
+        game_world.add_collision_pairs("ball:zombie", None, zombie)
     for zombie in zombies:
             game_world.add_collision_pairs("zombie:boy", zombie, None)
 

@@ -11,6 +11,8 @@ from ball import Ball  # 소년이 발사할 공 객체를 생성하기 위해 B
 
 import game_framework  # 프레임 독립적인 이동과 애니메이션에 경과 시간을 사용하기 위해 가져온다.
 
+import play_mode
+
 # 소년의 달리기 속력을 km/h에서 m/min, m/s, pixel/s 순서로 변환한다.
 PIXEL_PER_METER = (10.0 / 0.3)  # 현실의 0.3m가 게임에서 10픽셀이라는 비율을 계산한다.
 RUN_SPEED_KMPH = 20.0  # 소년의 달리기 속력을 시속 20km로 지정한다.
@@ -144,6 +146,7 @@ class Boy:  # 입력에 따라 상태를 바꾸고 이동하거나 공을 발사
         game_world.add_oject(ball)  # 새 공을 기본 깊이의 게임 월드에 등록한다.
         game_world.add_collision_pairs("grass:ball", None, ball)  # 새 공을 잔디 충돌 그룹의 b측에 등록한다.
         game_world.add_collision_pairs("boy:ball", None, ball)  # 새 공을 소년 충돌 그룹의 b측에도 등록한다.
+        game_world.add_collision_pairs("ball:zombie", ball, None)
 
     def pause(self):  # 플레이 모드가 일시 정지될 때 소년의 입력과 이동을 정리한다.
         self.pressed_keys.clear()  # 현재 눌린 것으로 기록된 모든 방향키를 제거한다.
@@ -192,5 +195,5 @@ class Boy:  # 입력에 따라 상태를 바꾸고 이동하거나 공을 발사
         if group == "boy:ball":  # 소년과 공 사이의 충돌인지 확인한다.
             self.ball_count += 1  # 닿은 공을 획득한 것으로 처리해 소지 개수를 하나 늘린다.
             # game_world.remove_object(other)  # 공 제거는 Ball.handle_collision에서 수행하도록 맡겨 둔다.
-        if group == "boy:zombies":
-            game_world.remove_object(self)
+        if group == "zombie:boy":
+            play_mode.finish()

@@ -50,5 +50,5 @@ class Ball:  # 포물선 운동을 하고 다른 객체와 충돌하는 공을 �
             game_world.remove_object(self)  # 소년이 획득한 공을 게임 월드에서 제거한다.
         if group == "grass:ball":  # 잔디와 공 사이의 충돌인지 확인한다.
             self.stopped = True  # 지면에 닿은 공의 이동과 물리 계산을 멈춘다.
-        if group == "ball:zombies":
-            self.stopped = True
+        if group == "ball:zombie":
+            game_world.remove_object(self)

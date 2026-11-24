@@ -56,5 +56,6 @@ class Zombie:  # 일정 구간을 좌우로 왕복하며 걷는 좀비를 나타
     def get_bb(self):  # 좀비의 축 정렬 충돌 사각형 좌표를 계산한다.
         return self.x - 100, self.y - 100, self.x + 100, self.y + 100  # 중심에서 상하좌우 100픽셀 범위를 반환한다.
     def handle_collision(self, group, other):
-        if group == "ball:zombies":
-            image
+        if group == "zombie:boy":
+            pass
+        

@@ -196,4 +196,4 @@ class Boy:  # 입력에 따라 상태를 바꾸고 이동하거나 공을 발사
             self.ball_count += 1  # 닿은 공을 획득한 것으로 처리해 소지 개수를 하나 늘린다.
             # game_world.remove_object(other)  # 공 제거는 Ball.handle_collision에서 수행하도록 맡겨 둔다.
         if group == "zombie:boy":
-            play_mode.finish()
+            game_framework.quit()
